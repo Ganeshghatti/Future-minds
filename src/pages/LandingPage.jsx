@@ -2,9 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import LearningOutcomes from '../components/LearningOutcomes';
 import Agenda from '../components/Agenda';
-import HandsOn from '../components/HandsOn';
 import EventDetails from '../components/EventDetails';
 import Bonuses from '../components/Bonuses';
 import Educators from '../components/Educators';
@@ -17,9 +15,7 @@ const LandingPage = () => {
       <Navbar />
       <Hero />
       <About />
-      {/* <LearningOutcomes /> */}
       <Agenda />
-      {/* <HandsOn /> */}
       <EventDetails />
       <Bonuses />
       <Educators />

@@ -33,27 +33,27 @@ const Agenda = () => {
   };
 
   return (
-    <section id="agenda" className="py-24 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+    <section id="agenda" className="py-16 sm:py-20 lg:py-24 bg-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 tracking-tight">
             Workshop <span className="text-emerald-400">Agenda</span>
           </h2>
-          <div className="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+          <div className="w-16 sm:w-20 lg:w-24 h-1 bg-emerald-400 mx-auto mb-6 sm:mb-8"></div>
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-4">
             A comprehensive day-long journey from theory to practice, designed to transform you into an AI agent expert
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline - Mobile First */}
         <div className="relative max-w-4xl mx-auto">
-          {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-400 via-slate-600 to-emerald-400"></div>
+          {/* Timeline Line - Hidden on mobile, visible on desktop */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-400 via-slate-600 to-emerald-400"></div>
 
           {agendaItems.map((item, index) => (
-            <div key={index} className="relative flex items-center mb-8 last:mb-0">
+            <div key={index} className="relative flex items-center mb-6 sm:mb-8 last:mb-0">
               {/* Timeline Dot */}
-              <div className={`absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-slate-900 z-10 ${
+              <div className={`absolute left-4 md:left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 sm:border-4 border-slate-900 z-10 ${
                 item.type === 'hands-on' ? 'bg-orange-400' :
                 item.type === 'theory' ? 'bg-purple-400' :
                 item.type === 'break' ? 'bg-yellow-400' :
@@ -64,18 +64,18 @@ const Agenda = () => {
                 'bg-slate-400'
               }`}></div>
 
-              {/* Content Card */}
-              <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} md:w-1/2`}>
-                <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 hover:bg-slate-800/70 hover:border-slate-600 transition-all duration-300 group">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-emerald-400 font-semibold text-sm bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20">
+              {/* Content Card - Mobile: Full width, Desktop: Alternating sides */}
+              <div className={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'} md:w-1/2`}>
+                <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-4 sm:p-6 hover:bg-slate-800/70 hover:border-slate-600 transition-all duration-300 group">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
+                    <span className="text-emerald-400 font-semibold text-xs sm:text-sm bg-emerald-400/10 px-2 sm:px-3 py-1 rounded-full border border-emerald-400/20 w-fit">
                       {item.time}
                     </span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getTypeColor(item.type)}`}>
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium border w-fit ${getTypeColor(item.type)}`}>
                       {item.type.replace('-', ' ')}
                     </span>
                   </div>
-                  <h3 className="text-white font-semibold text-lg group-hover:text-emerald-300 transition-colors duration-300">
+                  <h3 className="text-white font-semibold text-sm sm:text-base lg:text-lg group-hover:text-emerald-300 transition-colors duration-300 leading-tight">
                     {item.title}
                   </h3>
                 </div>
@@ -85,35 +85,35 @@ const Agenda = () => {
         </div>
 
         {/* Summary Stats */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-            <div className="text-3xl font-bold text-white mb-2">7</div>
-            <div className="text-slate-400 text-sm">Total Hours</div>
+        <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-4 sm:p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">7</div>
+            <div className="text-slate-400 text-xs sm:text-sm">Total Hours</div>
           </div>
-          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-            <div className="text-3xl font-bold text-orange-400 mb-2">5</div>
-            <div className="text-slate-400 text-sm">Hands-On Sessions</div>
+          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-4 sm:p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="text-2xl sm:text-3xl font-bold text-orange-400 mb-1 sm:mb-2">5</div>
+            <div className="text-slate-400 text-xs sm:text-sm">Hands-On Sessions</div>
           </div>
-          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-            <div className="text-3xl font-bold text-purple-400 mb-2">6</div>
-            <div className="text-slate-400 text-sm">Theory Modules</div>
+          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-4 sm:p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="text-2xl sm:text-3xl font-bold text-purple-400 mb-1 sm:mb-2">6</div>
+            <div className="text-slate-400 text-xs sm:text-sm">Theory Modules</div>
           </div>
-          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300">
-            <div className="text-3xl font-bold text-emerald-400 mb-2">1</div>
-            <div className="text-slate-400 text-sm">Networking Hour</div>
+          <div className="text-center bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-4 sm:p-6 hover:bg-slate-800/70 transition-all duration-300">
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1 sm:mb-2">1</div>
+            <div className="text-slate-400 text-xs sm:text-sm">Networking Hour</div>
           </div>
         </div>
 
         {/* Call to Action */}
-        <div className="mt-20 text-center">
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-10 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">
+        <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 sm:p-8 lg:p-10 max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">
               Perfect Balance of Theory & Practice
             </h3>
-            <p className="text-slate-300 mb-8 text-lg leading-relaxed">
+            <p className="text-slate-300 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">
               Our carefully crafted agenda ensures you get both the foundational knowledge and practical experience needed to succeed with AI agents.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center text-xs sm:text-sm">
               <div className="text-slate-300">Strategic Frameworks</div>
               <div className="text-slate-300">Hands-On Building</div>
               <div className="text-slate-300">Peer Networking</div>

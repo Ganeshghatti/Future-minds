@@ -1,4 +1,6 @@
 import React from 'react';
+import swati from '../assets/educators/swatiawasthi.jpg';
+import subham from '../assets/educators/subhamsharma.jpg';
 
 const Educators = () => {
   const educators = [
@@ -6,7 +8,7 @@ const Educators = () => {
       id: 1,
       name: "Swati Awasthi",
       title: "Founder of Women in Product India",
-      image: "/src/assets/educators/swatiawasthi.jpg",
+      image: swati,
       bio: "Swati Awasthi is the Founder of Women in Product India, building a thriving community with a sharp vision of advancing women in product leadership & entrepreneurship.",
       experience: [
         "Led AI, SaaS and mobile products at Dell, PwC and Sapient",
@@ -26,7 +28,7 @@ const Educators = () => {
       id: 2,
       name: "Shubham Sharma",
       title: "Founder of SunitechAI & Data Science Expert",
-      image: "/src/assets/educators/subhamsharma.jpg",
+      image: subham,
       bio: "Shubham has 9+ years of experience in Data Science and is currently building SunitechAI, an AI-powered upskilling platform. He mentors working professionals on the latest data science tools and technologies.",
       experience: [
         "9+ years of experience in Data Science",
@@ -50,9 +52,9 @@ const Educators = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Meet Your Educators
+            Meet Your <span className="text-emerald-400">Educators</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
             Learn from industry leaders who have shaped the AI and product landscape across global organizations
           </p>

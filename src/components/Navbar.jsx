@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/agentx_logo_edited_0.jpeg';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,12 +19,12 @@ const Navbar = () => {
           {/* Clean Logo */}
           <div className="flex items-center space-x-4">
             <img 
-              src="/src/assets/agentx_logo.jpeg" 
+              src={logo} 
               alt="Future Minds Institute Logo" 
-              className="w-12 h-12 rounded-lg object-cover"
+              className="w-12 h-12 rounded-lg object-fill"
             />
             <div className="text-white">
-              <h1 className="text-xl font-semibold">Future Minds Institute</h1>
+              <p className="text-l font-semibold">Future Minds Institute</p>
               <p className="text-sm text-slate-400">Transforming Education</p>
             </div>
           </div>
@@ -32,31 +33,31 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('agenda')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer"
             >
               Agenda
             </button>
             <button 
               onClick={() => scrollToSection('event-details')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer"
             >
               Details
             </button>
             <button 
               onClick={() => scrollToSection('educators')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer"
             >
               Educators
             </button>
             <button 
               onClick={() => scrollToSection('cta')}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer"
             >
               Register Now
             </button>
