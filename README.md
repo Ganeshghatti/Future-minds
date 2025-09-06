@@ -1,1 +1,1 @@
-futuremindsinstitute.com
+visit futuremindsinstitute.com
