@@ -2,6 +2,14 @@ import React from 'react';
 import logo from '../assets/agentx_logo_edited_0.jpeg';
 
 const Footer = () => {
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-primary-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,23 +66,23 @@ const Footer = () => {
                   <h4 className="text-secondary-light font-semibold mb-2 sm:mb-2 text-base sm:text-lg">Workshop</h4>
                   <ul className="space-y-1">
                     <li>
-                      <a href="#about" className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium">
+                      <a onClick={() => scrollToSection('about')} className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer">
                         About
                       </a>
                     </li>
                     <li>
-                      <a href="#agenda" className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium">
+                      <a onClick={() => scrollToSection('agenda')} className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer">
                         Agenda
                       </a>
                     </li>
                     <li>
-                      <a href="#educators" className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium">
-                        Educators
+                      <a onClick={() => scrollToSection('event-details')} className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer">
+                        Event Details
                       </a>
                     </li>
                     <li>
-                      <a href="#event-details" className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium">
-                        Event Details
+                      <a onClick={() => scrollToSection('educators')} className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer">
+                        Educators
                       </a>
                     </li>
                   </ul>

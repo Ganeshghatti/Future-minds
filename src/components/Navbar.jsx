@@ -21,11 +21,11 @@ const Navbar = () => {
             <img 
               src={logo} 
               alt="Future Minds Institute Logo" 
-              className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg object-fill"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg object-fill"
             />
             <div className="text-white">
-              <p className="text-sm sm:text-base lg:text-lg font-semibold leading-tight">Future Minds Institute</p>
-              <p className="text-xs sm:text-sm text-slate-400 leading-tight">Transforming Education</p>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-tight">Future Minds Institute</p>
+              <p className="text-xs sm:text-xs md:text-sm text-slate-400 leading-tight">Transforming Education</p>
             </div>
           </div>
 
@@ -63,23 +63,35 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Tablet Navigation - Show on md screens */}
-          <div className="hidden md:flex lg:hidden items-center space-x-4">
+          {/* Tablet Navigation - Show on md screens, include all sections */}
+          <div className="hidden md:flex lg:hidden items-center space-x-3">
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-sm"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('agenda')}
-              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-sm"
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
             >
               Agenda
             </button>
             <button 
+              onClick={() => scrollToSection('event-details')}
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
+            >
+              Details
+            </button>
+            <button 
+              onClick={() => scrollToSection('educators')}
+              className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
+            >
+              Educators
+            </button>
+            <button 
               onClick={() => scrollToSection('cta')}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-sm"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-xs"
             >
               Register
             </button>
@@ -102,9 +114,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation */}
+        {/* Enhanced Mobile Navigation - Fixed background */}
         {isMenuOpen && (
-          <div className="md:hidden bg-slate-800/95 backdrop-blur-md border-t border-slate-700/50">
+          <div className="md:hidden absolute left-0 right-0 top-full bg-slate-800/95 backdrop-blur-md border-t border-slate-700/50 shadow-lg">
             <div className="px-4 pt-4 pb-6 space-y-1">
               <button 
                 onClick={() => scrollToSection('about')}
