@@ -27,7 +27,7 @@ const LandingPage = () => {
       <Stories/>
       <Educators />
       <Gallery/>
-      <CallToAction />
+      {/* <CallToAction /> */}
       <Footer />
     </div>
   );

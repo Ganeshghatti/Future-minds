@@ -20,8 +20,14 @@ const storiesData = [
 ];
 
 export default function Stories() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
-    <section className="bg-slate-900 px-6 lg:px-24 py-16 w-full" id="stories">
+    <section  className="bg-slate-900 px-6 lg:px-24 py-16 w-full" id="stories">
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
         Success <span className="text-emerald-400">Stories</span>
       </h2>
@@ -57,11 +63,19 @@ export default function Stories() {
             Join hundreds of students who've already transformed their career
             prospects with Future Minds Institute.
           </p>{" "}
-          <h3 className="text-xl md:text-2xl mt-2">Limited seats available for our next cohort starting ....</h3>
+          <h3 className="text-xl md:text-2xl mt-2">
+            Limited seats available for our next cohort starting ....
+          </h3>
           <div className=" w-full mt-3">
-            <button className="bg-green-600 text-white rounded-lg p-2 mr-2">Enroll Now</button>
-            <button className="bg-blue-600 text-white rounded-lg p-2 mr-2">Schedule a Consulation</button>
-            <button className="bg-red-600 text-white rounded-lg p-2 ">Download Course Brochure</button>
+            <button onClick={()=>scrollToSection('courses')} className="bg-slate-700 text-white rounded-md p-2 mr-2">
+              Enroll Now
+            </button>
+            <button className=" text-white rounded-md border-2 mt-2 border-gray-700 p-2 mr-2">
+              Schedule a Consulation
+            </button>
+            <button className=" text-white rounded-lg p-2 mt-2 border-2 border-gray-700 ">
+              Download Course Brochure
+            </button>
           </div>
         </div>
       </div>
