@@ -1,57 +1,67 @@
-"use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
+import image1 from "../assets/gallery/IMG_7742.JPG";
+import image2 from "../assets/gallery/C4A06ACD-3355-4BE6-A55A-D9455E321E8F_1_102_o (3).jpeg";
+import image3 from "../assets/gallery/D808416C-12EF-41AE-9259-D48A1D746B6E_1_102_o (2).jpeg";
+import image4 from "../assets/gallery/e81d4bc9-751b-40cc-86d5-c513b3fbc65b-copied-media~2.jpg";
+import image5 from "../assets/gallery/IMG_8668.JPG";
+import image6 from "../assets/gallery/IMG_9916.JPG";
+import image7 from "../assets/gallery/IMG_0024 (2).jpg";
+import image8 from "../assets/gallery/IMG_0030 (1).jpg";
+import image9 from "../assets/gallery/IMG_0538.JPG";
+import image10 from "../assets/gallery/IMG_0568.JPG";
+import image11 from "../assets/gallery/IMG_0586.JPG";
+import image12 from "../assets/gallery/IMG_4657.JPG";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryImages = [
     {
-      src: "src/assets/gallery/IMG_7742.JPG",
+      src: image1,
       alt: "Industrial robot assembling car parts",
     },
     {
-      src: "src/assets/gallery/C4A06ACD-3355-4BE6-A55A-D9455E321E8F_1_102_o (3).jpeg",
+      src: image2,
       alt: "Robotic arms working on manufacturing line",
     },
     {
-      src: "src/assets/gallery/D808416C-12EF-41AE-9259-D48A1D746B6E_1_102_o (2).jpeg",
+      src: image3,
       alt: "Precision robotic arm in factory",
     },
     {
-      src: "src/assets/gallery/e81d4bc9-751b-40cc-86d5-c513b3fbc65b-copied-media~2.jpg",
+      src: image4,
       alt: "Smart factory with digital control",
     },
     {
-      src: "src/assets/gallery/IMG_8668.JPG",
+      src: image5,
       alt: "Collaborative robot working with human",
     },
     {
-      src: "src/assets/gallery/IMG_9916.JPG",
+      src: image6,
       alt: "Collaborative robot working with human",
     },
     {
-      src: "src/assets/gallery/IMG_0024 (2).jpg",
+      src: image7,
       alt: "Automated quality control system",
     },
     {
-      src: "src/assets/gallery/IMG_0030 (1).jpg",
+      src: image8,
       alt: "Flexible robotic production line",
     },
     {
-      src: "src/assets/gallery/IMG_0538.JPG",
+      src: image9,
       alt: "Innovative robotics technology",
     },
     {
-      src: "src/assets/gallery/IMG_0568.JPG",
+      src: image10,
       alt: "Efficient factory automation process",
     },
     {
-      src: "src/assets/gallery/IMG_0586.JPG",
+      src: image11,
       alt: "Custom robotic automation solutions",
     },
     {
-      src: "src/assets/gallery/IMG_4657.JPG",
+      src: image12,
       alt: "Smart industrial automation software",
     },
   ];
@@ -65,7 +75,7 @@ const Gallery = () => {
   };
 
   return (
-    <section className="bg-slate-900 px-6 lg:px-24 py-16 w-full">
+    <section id="gallery" className="bg-slate-900 px-6 lg:px-24 py-16 w-full">
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
         Gallery <span className="text-emerald-400">Section</span>
       </h2>{" "}

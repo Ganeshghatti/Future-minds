@@ -101,18 +101,18 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        onClick={() => scrollToSection("agenda")}
+                        onClick={() => scrollToSection("courses")}
                         className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer"
                       >
-                        Agenda
+                        Courses
                       </a>
                     </li>
                     <li>
                       <a
-                        onClick={() => scrollToSection("event-details")}
+                        onClick={() => scrollToSection("benefits")}
                         className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer"
                       >
-                        Event Details
+                        Benefits
                       </a>
                     </li>
                     <li>

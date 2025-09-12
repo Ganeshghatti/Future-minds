@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Clean Logo - Better responsive sizing */}
           <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-            <img 
+            <img onClick={()=>scrollToSection("hero")}
               src={logo} 
               alt="Future Minds Institute Logo" 
               className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-lg object-fill"
@@ -38,16 +38,16 @@ const Navbar = () => {
               About
             </button>
             <button 
-              onClick={() => scrollToSection('agenda')}
+              onClick={() => scrollToSection('courses')}
               className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-sm xl:text-base"
             >
-              Agenda
+              Courses
             </button>
             <button 
-              onClick={() => scrollToSection('event-details')}
+              onClick={() => scrollToSection('gallery')}
               className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-sm xl:text-base"
             >
-              Details
+              Gallery
             </button>
             <button 
               onClick={() => scrollToSection('educators')}

@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <section id="hero" className=" bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -54,7 +54,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20">
             <button
-              onClick={() => scrollToSection("cta")}
+              onClick={() => scrollToSection("courses")}
               className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Explore Courses

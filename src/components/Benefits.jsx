@@ -35,16 +35,14 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 bg-slate-800 jj">
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Benefits <span className="text-emerald-400">Section</span>
-      </h2>
+    <section id="benefits" className="py-16 bg-slate-800 jj">
+      <h3 className="text-3xl md:text-5xl font-bold text-center text-gray-900 mb-12">
+        Why Future Minds Institute{" "}
+        <span className="text-emerald-400">Graduates Stand Out</span>
+      </h3>
       <div className="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
 
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-          Why Future Minds Institute Graduates Stand Out
-        </h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => (
             <div
