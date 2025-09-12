@@ -77,7 +77,7 @@ const Gallery = () => {
   return (
     <section id="gallery" className="bg-slate-900 px-6 lg:px-24 py-16 w-full">
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Gallery <span className="text-emerald-400">Section</span>
+        Gallery
       </h2>{" "}
       <div className="w-24 h-1 bg-emerald-400 mx-auto mb-8"></div>
       <div className="mt-12">
