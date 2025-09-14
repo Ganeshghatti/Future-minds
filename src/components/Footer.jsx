@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/agentx_logo_edited_0.jpeg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -55,7 +56,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/wip-india/"
                     className="w-10 h-10 bg-slate-blue hover:bg-accent-gold rounded-lg flex items-center justify-center transition-all duration-300 group hover:scale-110"
                   >
                     <svg
@@ -82,7 +83,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Links Grid - Better responsive layout */}
             <div className="lg:col-span-3 flex flex-col justify-center items-center">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
                 {/* Quick Links */}
@@ -94,7 +94,7 @@ const Footer = () => {
                     <li>
                       <a
                         onClick={() => scrollToSection("about")}
-                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium cursor-pointer"
+                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium cursor-pointer"
                       >
                         About
                       </a>
@@ -126,7 +126,6 @@ const Footer = () => {
                   </ul>
                 </div>
 
-                {/* Resources */}
                 <div>
                   <h4 className="text-secondary-light font-semibold mb-2 sm:mb-2 text-base sm:text-lg">
                     Resources
@@ -135,39 +134,38 @@ const Footer = () => {
                     <li>
                       <a
                         href="#"
-                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium"
-                      >
-                        CrewAI Docs
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium"
-                      >
-                        Learning Materials
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium"
-                      >
-                        Community
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform transition-transform duration-200 hover:font-medium"
+                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform hover:font-medium"
                       >
                         FAQ
+                      </a>
+                    </li>
+                    <li>
+                      <Link
+                        to="/privacypolicy"
+                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium"
+                      >
+                        Refund Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium"
+                      >
+                        Terms and Condition
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                {/* Contact - Fixed alignment issues */}
                 <div className="flex flex-col  items-center">
                   <h4 className="text-secondary-light font-semibold mb-2 sm:mb-3 text-base sm:text-lg">
                     Contact
@@ -207,32 +205,6 @@ const Footer = () => {
                       </svg>
                       <span className="group-hover:text-secondary-light transition-colors duration-200">
                         +91 98765 43210
-                      </span>
-                    </li>
-                    <li className="flex items-start text-muted-gray text-sm sm:text-base group">
-                      <svg
-                        className="w-4 h-4 mr-3 mt-1 flex-shrink-0 text-accent-gold group-hover:text-secondary-light transition-colors duration-200"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span className="group-hover:text-secondary-light transition-colors duration-200">
-                        Alliance University,
-                        <br />
-                        Bangalore, Karnataka
                       </span>
                     </li>
                   </ul>
