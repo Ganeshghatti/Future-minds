@@ -16,7 +16,6 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Clean Logo - Better responsive sizing */}
           <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
             <img onClick={()=>scrollToSection("hero")}
               src={logo} 
@@ -72,16 +71,16 @@ const Navbar = () => {
               About
             </button>
             <button 
-              onClick={() => scrollToSection('agenda')}
+              onClick={() => scrollToSection('courses')}
               className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
             >
-              Agenda
+              Courses
             </button>
             <button 
-              onClick={() => scrollToSection('event-details')}
+              onClick={() => scrollToSection('gallery')}
               className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
             >
-              Details
+              Gallery
             </button>
             <button 
               onClick={() => scrollToSection('educators')}
@@ -97,7 +96,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile menu button - Show on smaller screens */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -114,7 +112,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation - Fixed background */}
         {isMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 top-full bg-slate-800/95 backdrop-blur-md border-t border-slate-700/50 shadow-lg">
             <div className="px-4 pt-4 pb-6 space-y-1">
@@ -125,16 +122,16 @@ const Navbar = () => {
                 About
               </button>
               <button 
-                onClick={() => scrollToSection('agenda')}
+                onClick={() => scrollToSection('courses')}
                 className="block w-full text-left px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200 font-medium text-sm"
               >
-                Agenda
+                Courses
               </button>
               <button 
-                onClick={() => scrollToSection('event-details')}
+                onClick={() => scrollToSection('gallery')}
                 className="block w-full text-left px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200 font-medium text-sm"
               >
-                Details
+                Gallery
               </button>
               <button 
                 onClick={() => scrollToSection('educators')}
