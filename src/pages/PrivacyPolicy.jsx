@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
         {/* Title */}
         <div className="w-full text-center ">
           <h3 className="text-3xl font-medium mb-2">
-            FutureMindsPrivacy Policy
+            Future Minds Institute Privacy Policy
           </h3>
           <p className="text-sm text-gray-400 mb-6">
             Last updated: September 14, 2025
