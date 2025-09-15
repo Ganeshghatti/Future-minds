@@ -148,20 +148,20 @@ const Footer = () => {
                       </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <Link
+                        to="/refundpolicy"
                         className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium"
                       >
                         Refund Policy
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <Link
+                        to="/tac"
                         className="text-muted-gray hover:text-secondary-light transition-all duration-300 text-sm sm:text-base block py-1 hover:translate-x-2 transform  hover:font-medium"
                       >
                         Terms and Condition
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

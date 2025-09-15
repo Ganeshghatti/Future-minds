@@ -36,7 +36,7 @@ const benefits = [
 const BenefitsSection = () => {
   return (
     <section id="benefits" className="py-16 bg-slate-800 jj">
-      <h3 className="text-3xl md:text-5xl font-bold text-center text-gray-900 mb-12">
+      <h3 className="text-3xl md:text-5xl font-bold text-center text-white mb-12">
         Why Future Minds Institute{" "}
         <span className="text-emerald-400">Graduates Stand Out</span>
       </h3>
