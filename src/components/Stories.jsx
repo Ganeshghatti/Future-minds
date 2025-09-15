@@ -44,7 +44,7 @@ export default function Stories() {
           >
             <p className="text-gray-300 italic mb-4">“{story.quote}”</p>
             <div className="mt-auto">
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-300">
                 {story.author}
               </h3>
               <p className="text-sm text-gray-500">{story.role}</p>

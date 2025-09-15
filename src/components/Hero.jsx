@@ -31,7 +31,7 @@ const Hero = () => {
           <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 rounded-full text-slate-200 text-xs sm:text-sm font-medium mb-8 sm:mb-12">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3"></span>
             <span className="hidden sm:inline">
-              WIP(Women In Product) India
+              Powered By WIP(Women In Product) India
             </span>
             <span className="sm:hidden">AI Agent Workshop</span>
           </div>
