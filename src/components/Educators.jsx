@@ -25,7 +25,7 @@ const Educators = () => {
         "Community Building",
       ],
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/swati-awasthi/",
         twitter: "#",
       },
       gradient: "from-blue-500 to-purple-600",
@@ -50,7 +50,7 @@ const Educators = () => {
         "Technical Leadership",
       ],
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/amritraj02/",
         twitter: "#",
       },
       gradient: "from-purple-500 to-pink-600",
