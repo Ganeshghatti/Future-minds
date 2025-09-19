@@ -5,9 +5,9 @@ const About = () => {
     <section id="about" className="py-16 sm:py-20 lg:py-24 bg-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 tracking-tight">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 tracking-tight">
             Empowering the Next Generation of AI Leaders
-          </h2>
+          </h3>
           <div className="w-16 sm:w-20 lg:w-24 h-1 bg-emerald-400 mx-auto mb-6 sm:mb-8"></div>
           <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-4">
             At Future Minds Institute, we believe every student deserves to be
@@ -21,9 +21,9 @@ const About = () => {
 
         <div className=" gap-8 sm:gap-12 lg:gap-10 items-start">
           <div className="space-y-6 sm:space-y-8">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
               Why Choose Future Minds Institute?
-            </h2>
+            </h3>
 
             <div className="bg-slate-700/30 backdrop-blur-sm border border-slate-600/30 rounded-xl p-6 sm:p-8">
               <div className="space-y-3 sm:space-y-4 text-start">

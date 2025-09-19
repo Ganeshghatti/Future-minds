@@ -67,15 +67,10 @@ export default function Stories() {
             Limited seats available for our next cohort starting ....
           </h3>
           <div className=" w-full mt-3">
-            <button onClick={()=>scrollToSection('courses')} className="bg-slate-700 text-white rounded-md p-2 mr-2">
+            <button onClick={()=>scrollToSection('courses')} className="bg-slate-700 px-5 text-white rounded-md py-2 mt-2 hover:bg-slate-900 mr-2">
               Enroll Now
             </button>
-            <button className=" text-white rounded-md border-2 mt-2 border-gray-700 p-2 mr-2">
-              Schedule a Consulation
-            </button>
-            <button className=" text-white rounded-lg p-2 mt-2 border-2 border-gray-700 ">
-              Download Course Brochure
-            </button>
+          
           </div>
         </div>
       </div>

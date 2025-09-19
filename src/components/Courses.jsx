@@ -41,7 +41,7 @@ const Courses = () => {
       title: "🎯 Advanced Level: AI Innovation, Strategy, and Capstone Project",
       value: "❌ ₹24,999",
       earlyBird: "✅ ₹19,999",
-      earlybirdtitle : "Early Bird -10 Seats Left!",
+      earlybirdtitle: "Early Bird -10 Seats Left!",
       description:
         "Build Real-World AI Solutions Like Silicon Valley Pros. Perfect for students ready to lead AI initiatives or who have completed the Intermediate Level.",
       duration: "8-10 hours (Flexible weekend/weekday schedule)",
@@ -68,20 +68,19 @@ const Courses = () => {
             Choose the perfect starting point for your AI journey
           </p>
         </div>
-
-        <div className="grid grid-cols-1  md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {courses.map((course, index) => (
             <div
               key={index}
-              className="relative bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-2"
+              className="relative bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between"
             >
-              <div className="mb-6">
+              <div>
                 <h3 className="text-2xl font-semibold text-white mb-4">
                   {course.title}
                 </h3>
 
                 <div className="mb-4 mt-2">
-                  <div className="text-xl text-slate-400 ">{course.value}</div>
+                  <div className="text-xl text-slate-400">{course.value}</div>
                   <div className="text-2xl font-bold text-emerald-400">
                     {course.earlyBird}{" "}
                     <span className="text-xs text-slate-400">
@@ -96,19 +95,23 @@ const Courses = () => {
                 <div className="text-sm font-medium mt-4 mb-4 text-emerald-300">
                   ⏳ {course.duration}
                 </div>
+
+                <ul className="space-y-3 text-start">
+                  {course.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-start text-slate-300 text-sm"
+                    >
+                      <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className="space-y-3 text-start">
-                {course.features.map((feature, featureIndex) => (
-                  <li
-                    key={featureIndex}
-                    className="flex items-start text-slate-300 text-sm"
-                  >
-                    <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              <button className="mt-6 w-full bg-emerald-500 text-white font-semibold py-2 px-2 rounded-lg hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-emerald-400/40">
+                Enroll Now
+              </button>
             </div>
           ))}
         </div>
