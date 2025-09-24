@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import logo from '../assets/agentx_logo_edited_0.jpeg';
+import { useModal } from '../hooks/useModal';
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { openLogin } = useModal();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
+    }
+  };
+
+  const handleRegisterClick = () => {
+    if (isAuthenticated) {
+      console.log('User is authenticated, proceed with enrollment');
+    } else {
+      openLogin();
     }
   };
 
@@ -54,12 +67,26 @@ const Navbar = () => {
             >
               Educators
             </button>
-            <button 
-              onClick={() => scrollToSection('cta')}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 xl:px-6 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-sm xl:text-base"
-            >
-              Register Now
-            </button>
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-4" onClick={()=>navigate('/dashboard')}>
+                <span className="text-slate-300 text-sm hover:text-white transition-colors duration-200 font-medium cursor-pointer">
+                  Dashboard
+                </span>
+                {/* <button 
+                  onClick={logout}
+                  className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-sm xl:text-base"
+                >
+                  Logout
+                </button> */}
+              </div>
+            ) : (
+              <button 
+                onClick={handleRegisterClick}
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 xl:px-6 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-sm xl:text-base"
+              >
+                Register Now
+              </button>
+            )}
           </div>
 
           {/* Tablet Navigation - Show on md screens, include all sections */}
@@ -88,12 +115,24 @@ const Navbar = () => {
             >
               Educators
             </button>
-            <button 
-              onClick={() => scrollToSection('cta')}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-xs"
-            >
-              Register
-            </button>
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-2">
+                <span className="text-slate-300 text-xs" onClick={()=>navigate('/dashboard')}>Dashboard</span>
+                {/* <button 
+                  onClick={logout}
+                  className="text-slate-400 hover:text-white transition-colors duration-200 font-medium cursor-pointer text-xs"
+                >
+                  Logout
+                </button> */}
+              </div>
+            ) : (
+              <button 
+                onClick={handleRegisterClick}
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg font-semibold transition-all duration-200 cursor-pointer text-xs"
+              >
+                Register
+              </button>
+            )}
           </div>
 
           <div className="md:hidden">
@@ -139,12 +178,24 @@ const Navbar = () => {
               >
                 Educators
               </button>
-              <button 
-                onClick={() => scrollToSection('cta')}
-                className="block w-full text-left px-4 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-all duration-200 mt-4 font-semibold text-sm"
-              >
-                Register Now
-              </button>
+              {isAuthenticated ? (
+                <div className="px-4 py-3 border-t border-slate-700/50">
+                  <div className="text-slate-300 text-sm mb-2" onClick={()=>navigate('/dashboard')}>Dashboard</div>
+                  {/* <button 
+                    onClick={logout}
+                    className="block w-full text-left px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg transition-all duration-200 font-medium text-sm"
+                  >
+                    Logout
+                  </button> */}
+                </div>
+              ) : (
+                <button 
+                  onClick={handleRegisterClick}
+                  className="block w-full text-left px-4 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-all duration-200 mt-4 font-semibold text-sm"
+                >
+                  Register Now
+                </button>
+              )}
             </div>
           </div>
         )}

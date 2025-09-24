@@ -1,0 +1,171 @@
+import React, { useEffect, useMemo, useState } from "react";
+import axiosInstance from "../api/axios";
+import { useAuth } from "../hooks/useAuth";
+
+const Dashboard = () => {
+  const { user, isAuthenticated, logout} = useAuth();
+  const [allCourses, setAllCourses] = useState([]);
+  const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const load = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Fetch all courses, then filter to the ones the user owns
+        const res = await axiosInstance.get("/course");
+        const list = Array.isArray(res?.data?.courses) ? res.data.courses : [];
+
+        if (!mounted) return;
+        setAllCourses(list);
+      } catch (e) {
+        if (!mounted) return;
+        setError(e?.response?.data?.msg || e.message || "Failed to load courses");
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+
+    if (isAuthenticated) load();
+    else {
+      setLoading(false);
+      setError("You are not logged in.");
+    }
+
+    return () => { mounted = false; };
+  }, [isAuthenticated]);
+
+  // Build the list of courses the user owns with order info (start/end/price)
+  const enrolledCourses = useMemo(() => {
+    if (!user || !Array.isArray(user.courses)) return [];
+    const byId = new Map(allCourses.map((c) => [String(c._id), c]));
+    return user.courses
+      .map((uc) => {
+        const id = String(uc.courseId || uc.CourseId || uc?.courseId?._id || "");
+        const meta = byId.get(id);
+        if (!meta) {
+          // Fallback when course reference wasn't stored; still show enrollment
+          return {
+            _id: uc._id,
+            name: "Course",
+            description: "",
+            duration: "",
+            features: [],
+            price: uc.price,
+            isActive: true,
+            startDate: uc.startDate ? new Date(uc.startDate) : null,
+            endDate: uc.endDate ? new Date(uc.endDate) : null,
+            razorpay_order_id: uc.razorpay_order_id,
+            razorpay_payment_id: uc.razorpay_payment_id,
+          };
+        }
+        return {
+          _id: meta._id,
+          name: meta.name,
+          description: meta.description,
+          duration: meta.duration,
+          features: meta.features || [],
+          price: uc.price ?? meta.price,
+          isActive: meta.isActive,
+          startDate: uc.startDate ? new Date(uc.startDate) : null,
+          endDate: uc.endDate ? new Date(uc.endDate) : null,
+          razorpay_order_id: uc.razorpay_order_id,
+          razorpay_payment_id: uc.razorpay_payment_id,
+        };
+      })
+      .filter(Boolean);
+  }, [user, allCourses]);
+
+  if (loading) {
+    return (
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 text-slate-300">
+          Loading your dashboard...
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 text-red-400">
+          {error}
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="h-screen py-16 bg-slate-900">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <button
+            onClick={logout}
+            className="absolute top-10 right-10 border border-slate-700 rounded-md px-4 py-2 text-slate-300 hover:text-white transition-colors duration-200 font-medium text-sm"
+        >
+            Logout
+        </button>
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold text-white">Welcome{user?.name ? `, ${user.name}` : ""}</h1>
+          <p className="text-slate-300 mt-2 pb-10">
+            Here are your enrolled courses.
+          </p>
+        </div>
+
+        {(user?.courses?.length ?? 0) === 0 ? (
+          <div className="text-slate-300">You haven’t enrolled in any course yet.</div>
+        ) : (
+          <div className="flex flex-row flex-wrap gap-8 ">
+            {enrolledCourses.map((course) => (
+              <div
+                key={course._id}
+                className="w-full md:w-[calc(33.333%-21.333px)] min-w-[280px] bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-1"
+              >
+                <h3 className="text-2xl font-semibold text-white mb-3">
+                  {course.name}
+                </h3>
+
+                <div className="mb-3">
+                  <div className="text-emerald-400 font-bold text-xl">₹{course.price}</div>
+                  <div className="text-xs text-slate-400 mt-1">{course.duration}</div>
+                </div>
+
+                <p className="text-slate-300 text-sm leading-relaxed line-clamp-3">
+                  {course.description}
+                </p>
+
+                <div className="text-sm font-medium mt-4 mb-3 text-emerald-300">
+                  ⏳ {course.duration}
+                </div>
+
+                <ul className="space-y-2 text-start mb-4">
+                  {(course.features || []).slice(0, 4).map((f, i) => (
+                    <li key={i} className="flex items-start text-slate-300 text-sm">
+                      <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="text-xs text-slate-400">
+                  {course.startDate && (
+                    <div>Started: {course.startDate.toLocaleDateString()}</div>
+                  )}
+                  <div>
+                    {course.endDate ? `Ends: ${course.endDate.toLocaleDateString()}` : "Lifetime access"}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default Dashboard;

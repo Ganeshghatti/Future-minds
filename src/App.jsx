@@ -5,6 +5,10 @@ import { Route, Routes } from "react-router-dom";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsandConditions from "./pages/TermsandConditions";
+import LoginModal from "./components/modals/login";
+import SignupModal from "./components/modals/signup";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -14,7 +18,18 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/refundpolicy" element={<RefundPolicy/>}/>
         <Route path="/tac" element={<TermsandConditions/>}/>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+
+      <LoginModal />
+      <SignupModal />
     </div>
   );
 }
