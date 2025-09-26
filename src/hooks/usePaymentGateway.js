@@ -3,14 +3,16 @@ import axiosInstance from "../api/axios";
 import { useAuth } from "./useAuth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useModal } from "./useModal";
 
 export default function usePaymentGateway({ courseId, courseName, onPaymentSuccess, onPaymentError }) {
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { openLogin } = useModal();
 
   const initiatePayment = async () => {
-    if (!user) return toast.error("Please login to make a payment");
+    if (!user) return openLogin();
     if (!courseId) return toast.error("Course ID is required");
     setLoading(true);
     try {
@@ -58,5 +60,5 @@ export default function usePaymentGateway({ courseId, courseName, onPaymentSucce
     }
   };
 
-  return { initiatePayment, loading, isDisabled: loading || !user || !courseId };
+  return { initiatePayment, loading, isDisabled: loading || !courseId };
 }

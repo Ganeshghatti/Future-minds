@@ -3,6 +3,7 @@ import axiosInstance from "../api/axios";
 // import PaymentGateway from "./paymentGateway";
 import usePaymentGateway from "../hooks/usePaymentGateway";
 import { useAuth } from "../hooks/useAuth";
+import { useModal } from "../hooks/useModal";
 
 const Courses = () => {
   // const courses = [
@@ -73,6 +74,8 @@ const Courses = () => {
 
   function CourseCard({ course, useForm, formUrl }) {
     const {user} = useAuth();
+    const { openLogin } = useModal();
+
     const { initiatePayment, loading, isDisabled } = usePaymentGateway({
       courseId: course._id,
       courseName: course.name,
@@ -84,6 +87,7 @@ const Courses = () => {
     });
 
     const onClick = () => {
+      if(!user) return openLogin();
       if(useForm && formUrl) {
         window.open(formUrl, "_blank", "noopener,noreferrer");
         return;

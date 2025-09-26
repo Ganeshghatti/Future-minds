@@ -75,7 +75,7 @@ const SignupModal = () => {
           type="button"
           aria-label="Close"
           onClick={closeAndReset}
-          className="absolute top-3 right-3 text-slate-400 hover:text-white hover:bg-slate-800/60 rounded-md p-1"
+          className="absolute top-3 right-3 text-slate-400 hover:text-white hover:bg-slate-800/60 rounded-md p-1 cursor-pointer"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
             <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
@@ -133,7 +133,7 @@ const SignupModal = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-2.5 font-medium transition-colors disabled:opacity-60"
+              className="w-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-2.5 font-medium transition-colors disabled:opacity-60 cursor-pointer"
             >
               {submitting ? "Sending OTP..." : "Send OTP"}
             </button>
@@ -141,7 +141,7 @@ const SignupModal = () => {
               <button 
                 type="button"
                 onClick={switchToLogin}
-                className="text-sm text-slate-300 hover:text-white underline-offset-4 hover:underline"
+                className="text-sm text-slate-300 hover:text-white underline-offset-4 hover:underline cursor-pointer"
               >
                 Already have an account? Log in
               </button>
@@ -163,14 +163,14 @@ const SignupModal = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-2.5 font-medium transition-colors disabled:opacity-60"
+              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg py-2.5 font-medium transition-colors disabled:opacity-60 cursor-pointer"
             >
               {submitting ? "Verifying..." : "Verify & Create Account"}
             </button>
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="w-full border border-slate-700 rounded-lg py-2 text-slate-300 hover:text-white"
+              className="w-full border border-slate-700 rounded-lg py-2 text-slate-300 hover:text-white cursor-pointer"
             >
               Back
             </button>

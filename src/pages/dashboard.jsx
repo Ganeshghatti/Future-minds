@@ -105,7 +105,7 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <button
             onClick={logout}
-            className="absolute top-10 right-10 border border-slate-700 rounded-md px-4 py-2 text-slate-300 hover:text-white transition-colors duration-200 font-medium text-sm"
+            className="absolute top-10 right-10 border bg-emerald-500 hover:bg-emerald-600 border-slate-700 rounded-md px-4 py-2 text-slate-300 hover:text-white transition-colors duration-200 font-medium text-sm cursor-pointer"
         >
             Logout
         </button>
@@ -119,7 +119,7 @@ const Dashboard = () => {
         {(user?.courses?.length ?? 0) === 0 ? (
           <div className="text-slate-300">You haven’t enrolled in any course yet.</div>
         ) : (
-          <div className="flex flex-row flex-wrap gap-8 ">
+          <div className="flex flex-row flex-wrap gap-8 cursor-pointer">
             {enrolledCourses.map((course) => (
               <div
                 key={course._id}
