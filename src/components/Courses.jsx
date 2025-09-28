@@ -82,8 +82,8 @@ const Courses = () => {
     });
 
     const isEnrolled = Array.isArray(user?.courses) && user.courses.some(c => {
-      const cid = String(c.courseId || c.CourseId || c?.courseId?._id || "");
-      return cid === String(course._id);
+      const cid = c?.courseId?._id || c.courseId;
+      return String(cid) === String(course._id);
     });
 
     const onClick = () => {
@@ -94,6 +94,7 @@ const Courses = () => {
       }
       initiatePayment();
     }
+
 
     const disabled = useForm ? false : (isDisabled || isEnrolled);
   
