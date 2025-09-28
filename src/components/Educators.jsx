@@ -1,6 +1,6 @@
 import React from "react";
 import swati from "../assets/educators/swatiawasthi.jpg";
-import subham from "../assets/educators/subhamsharma.jpg";
+// import subham from "../assets/educators/subhamsharma.jpg";
 import amrit from "../assets/educators/amritraj.jpg";
 
 const Educators = () => {

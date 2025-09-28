@@ -42,27 +42,28 @@ const Dashboard = () => {
   // Build the list of courses the user owns with order info (start/end/price)
   const enrolledCourses = useMemo(() => {
     if (!user || !Array.isArray(user.courses)) return [];
+    console.log(user.courses);
     const byId = new Map(allCourses.map((c) => [String(c._id), c]));
     return user.courses
       .map((uc) => {
-        const id = String(uc.courseId || uc.CourseId || uc?.courseId?._id || "");
+        const id = String(uc?.courseId?._id);
         const meta = byId.get(id);
-        if (!meta) {
-          // Fallback when course reference wasn't stored; still show enrollment
-          return {
-            _id: uc._id,
-            name: "Course",
-            description: "",
-            duration: "",
-            features: [],
-            price: uc.price,
-            isActive: true,
-            startDate: uc.startDate ? new Date(uc.startDate) : null,
-            endDate: uc.endDate ? new Date(uc.endDate) : null,
-            razorpay_order_id: uc.razorpay_order_id,
-            razorpay_payment_id: uc.razorpay_payment_id,
-          };
-        }
+        if (!meta) return null;
+        //   // Fallback when course reference wasn't stored; still show enrollment
+        //   return {
+        //     _id: uc.courseId._id,
+        //     name: "Course",
+        //     description: "",
+        //     duration: "",
+        //     features: [],
+        //     price: uc.price,
+        //     isActive: true,
+        //     startDate: uc.startDate ? new Date(uc.startDate) : null,
+        //     endDate: uc.endDate ? new Date(uc.endDate) : null,
+        //     razorpay_order_id: uc.razorpay_order_id,
+        //     razorpay_payment_id: uc.razorpay_payment_id,
+        //   };
+        // }
         return {
           _id: meta._id,
           name: meta.name,
@@ -99,6 +100,19 @@ const Dashboard = () => {
       </section>
     );
   }
+
+  const duration = (startDate, endDate) => {
+    const diffTime = Math.abs(endDate - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays < 30) {
+      return `${diffDays} days`;
+    } else if (diffDays >= 30 && diffDays < 365) {
+      return `${Math.ceil(diffDays / 30)} months`;
+    } else if (diffDays >= 365) {
+      return `${Math.ceil(diffDays / 365)} years`;
+    }
+    return "Lifetime access";
+  };
 
   return (
     <section className="h-screen py-16 bg-slate-900">
@@ -139,7 +153,7 @@ const Dashboard = () => {
                 </p>
 
                 <div className="text-sm font-medium mt-4 mb-3 text-emerald-300">
-                  ⏳ {course.duration}
+                  ⏳ {duration(Date.now(), course.endDate)} left
                 </div>
 
                 <ul className="space-y-2 text-start mb-4">
@@ -151,14 +165,14 @@ const Dashboard = () => {
                   ))}
                 </ul>
 
-                <div className="text-xs text-slate-400">
+                {/* <div className="text-xs text-slate-400">
                   {course.startDate && (
                     <div>Started: {course.startDate.toLocaleDateString()}</div>
                   )}
                   <div>
                     {course.endDate ? `Ends: ${course.endDate.toLocaleDateString()}` : "Lifetime access"}
                   </div>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
