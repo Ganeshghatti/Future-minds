@@ -76,8 +76,12 @@ const PaymentGateway = ({ courseId, courseName, onPaymentSuccess, onPaymentError
             // Call success callback if provided
             if (onPaymentSuccess) {
               onPaymentSuccess(razorpayResponse);
+              navigate("/dashboard", { replace: true });
+              setTimeout(() => {
+                window.location.reload();
+              }, 100);
             } else {
-              navigate("/courses", { replace: true });
+              navigate("/", { replace: true });
               setTimeout(() => {
                 window.location.reload();
               }, 100);

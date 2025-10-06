@@ -9,6 +9,7 @@ import LoginModal from "./components/modals/login";
 import SignupModal from "./components/modals/signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/dashboard";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/refundpolicy" element={<RefundPolicy/>}/>
         <Route path="/tac" element={<TermsandConditions/>}/>
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/dashboard"
           element={

@@ -7,6 +7,8 @@ export const API_ENDPOINTS = {
   
   // Auth endpoints
   LOGIN: `${API_BASE_URL}/auth/login`,
+  SEND_RESET_PASSWORD_LINK: `${API_BASE_URL}/auth/send-reset-password-link`,
+  RESET_PASSWORD: `${API_BASE_URL}/auth/reset-password`,
   SIGNUP: `${API_BASE_URL}/auth/signup`,
   USER_PROFILE: `${API_BASE_URL}/auth/user/profile`,
   

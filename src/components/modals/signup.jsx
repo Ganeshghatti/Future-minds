@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useModal } from '../../hooks/useModal';
 import { useAuth } from '../../hooks/useAuth';
+// import GoogleLoginButton from "../GoogleLoginButton";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const SignupModal = () => {
   const { showSignup, closeModals, switchToLogin } = useModal();
@@ -65,6 +67,14 @@ const SignupModal = () => {
     closeModals();
   };
 
+  // const GoogleAuthWrapper = () => {
+  //   return (
+  //   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+  //     <GoogleLoginButton />
+  //   </GoogleOAuthProvider>
+  //   )
+  // }
+
   if (!showSignup) return null;
 
   return (
@@ -81,7 +91,7 @@ const SignupModal = () => {
             <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
           </svg>
         </button>
-        <h2 className="text-xl font-semibold mb-4 text-white">
+        <h2 className="text-2xl font-bold text-emerald-400 mb-4">
           {step === 1 ? "Create account" : "Verify OTP"}
         </h2>
         {error ? <div className="text-red-400 text-sm mb-3">{error}</div> : null}
@@ -176,6 +186,9 @@ const SignupModal = () => {
             </button>
           </form>
         )}
+        {/* <div className="mt-3 text-center">
+          <GoogleAuthWrapper />
+        </div> */}
       </div>
     </div>
   );

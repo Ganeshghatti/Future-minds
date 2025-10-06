@@ -238,6 +238,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const googleLoginAndSignup = async (code) => {
+    try {
+      const response = await axiosInstance.get(`/auth/google/login?code=${code}`);
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      setIsAuthenticated(true);
+      setUser(response.data.user);
+      setAuthChecked(true);
+      console.log("User logged in successfully:", response.data.user);
+      return { success: true, user: response.data.user };
+  } catch (error) {
+    console.error("Google login error:", error);
+    throw error;
+  }
+  };
+
   const debugAuth = () => {
     const token = localStorage.getItem("token");
     console.log("Debug Auth State:", {
@@ -250,6 +266,34 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const sendResetPasswordLink = async (credentials) => {
+    try {
+      const response = await axiosInstance.post("/auth/send-reset-password-link", credentials);
+      if (response.data && response.data.success) {
+        return { success: true, message: response.data.message };
+      } else {
+        throw new Error(response.data?.message || "Failed to send reset password link");
+      }
+    } catch (error) {
+      console.error("Send reset password link error:", error);
+      throw error.response?.data?.msg || error.message || "Failed to send reset password link";
+    }
+  };
+
+  const changePassword = async (credentials) => {
+    try {
+      const response = await axiosInstance.post("/auth/reset-password", credentials);
+      if (response.data && response.data.success) {
+        return { success: true, message: response.data.message };
+      } else {
+        throw new Error(response.data?.message || "Failed to change password");
+      }
+    } catch (error) {
+      console.error("Change password error:", error);
+      throw error.response?.data?.msg || error.message || "Failed to change password";
+    }
+  };
+  
   const value = {
     user,
     loading,
@@ -262,6 +306,9 @@ export const AuthProvider = ({ children }) => {
     checkAuthStatus,
     refreshUserData,
     debugAuth,
+    googleLoginAndSignup,
+    sendResetPasswordLink,
+    changePassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

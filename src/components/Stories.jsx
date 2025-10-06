@@ -67,7 +67,7 @@ export default function Stories() {
             Limited seats available for our next cohort starting ....
           </h3>
           <div className=" w-full mt-3">
-            <button onClick={()=>scrollToSection('courses')} className="bg-slate-700 px-5 text-white rounded-md py-2 mt-2 hover:bg-slate-900 mr-2">
+            <button onClick={()=>scrollToSection('courses')} className="bg-emerald-400 px-5 text-white rounded-md py-2 mt-2 hover:bg-emerald-500 mr-2 cursor-pointer">
               Enroll Now
             </button>
           
