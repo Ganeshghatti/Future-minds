@@ -67,6 +67,7 @@ const Courses = () => {
   // ];
 
   const [courses, setCourses] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -87,6 +88,7 @@ const Courses = () => {
     });
 
     const onClick = () => {
+      if(isEnrolled) return;
       if(!user) return openLogin();
       if(useForm && formUrl) {
         window.open(formUrl, "_blank", "noopener,noreferrer");
@@ -96,10 +98,10 @@ const Courses = () => {
     }
 
 
-    const disabled = useForm ? false : (isDisabled || isEnrolled);
+    const disabled = isEnrolled || (!useForm && isDisabled);
   
     return (
-      <div className="relative bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+      <div className="w-full sm:w-[22rem] md:w-[22rem] relative bg-slate-800/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
         <div>
           <h3 className="text-2xl font-semibold text-white mb-4">{course.name}</h3>
           <div className="mb-4 mt-2">
@@ -137,7 +139,9 @@ const Courses = () => {
       try {
         setLoading(true);
         const res = await axiosInstance.get("/course");
+        const categoriesRes = await axiosInstance.get("/category");
         if (mounted) {
+          setCategories(categoriesRes?.data?.categories || []);
           const list = Array.isArray(res?.data?.courses) ? res.data.courses : [];
           // Optionally filter only active courses
           setCourses(list.filter(c => c.isActive));
@@ -150,6 +154,13 @@ const Courses = () => {
     })();
     return () => { mounted = false; };
   }, []);
+
+  const coursesForCategory = (categoryId) => {
+    return courses.filter(c => {
+      if(!Array.isArray(c.categories)) return false;
+      return c.categories.some(catRef => String(catRef?._id || catRef) === String(categoryId));
+    });
+  }
 
   if (loading) {
     return (
@@ -177,23 +188,37 @@ const Courses = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-            Your Path to <span className="text-emerald-400">AI Mastery</span>
+            Your Path to <span>AI Mastery</span>
           </h2>
-          <div className="w-24 h-1 bg-emerald-400 mx-auto mb-6"></div>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Choose the perfect starting point for your AI journey
-          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {courses.map((course, idx) => {
-            const useForm = idx >=courses.length - 2;
+        <div className="flex flex-col gap-16 ">
+          {categories.map((category) => {
+            const catCourses = coursesForCategory(category._id);
+            if(!catCourses.length) return null;
+
             return (
-              <CourseCard key={course._id} course={course} useForm={useForm} formUrl={formUrl} />
+              <div key={category._id}>
+                <div className="mb-6">
+                  <h3 className="text-3xl font-bold text-emerald-400 uppercase text-4xl mb-1">{category.name}</h3>
+                  <div className="w-28 h-1 bg-emerald-400 mx-auto mb-6"></div>
+                  <p className="text-slate-300 mt-2 text-center text-lg max-w-3xl mx-auto text-bold">{category.description}</p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-10 mx-auto">
+                  {catCourses.map((course, idx) => {
+                    const useForm = idx >= catCourses.length - 2;
+                    return (
+                      <CourseCard key={course._id} course={course} useForm={useForm} formUrl={formUrl} />
+                    )
+                  })}
+                </div>
+              </div>
             )
           })}
         </div>
+        
 
-        <div className="mt-24 text-center">
+        {/* <div className="mt-24 text-center">
           <div className="bg-slate-800/70 backdrop-blur-sm border border-slate-700 rounded-2xl p-12 max-w-4xl mx-auto shadow-lg hover:shadow-emerald-500/20 transition-all">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Project Examples You'll Create 
@@ -215,7 +240,7 @@ const Courses = () => {
               ))}
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
