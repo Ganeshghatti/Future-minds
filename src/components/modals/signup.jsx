@@ -27,7 +27,7 @@ const SignupModal = () => {
     try {
       await sendSignupOtp({
         name: form.name,
-        email: form.email,
+        email: (form.email).toLowerCase(),
         phone: form.phone,
         password: form.password,
       });
@@ -46,7 +46,7 @@ const SignupModal = () => {
     try {
       await signup({
         name: form.name,
-        email: form.email,
+        email:(form.email).toLowerCase(),
         phone: form.phone,
         password: form.password,
         otp: form.otp,
@@ -112,7 +112,7 @@ const SignupModal = () => {
               <input
                 type="email"
                 required
-                value={form.email}
+                value={(form.email).toLowerCase()}
                 onChange={onChange("email")}
                 className="w-75 text-center bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 placeholder="Email"

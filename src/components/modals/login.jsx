@@ -42,7 +42,7 @@ const LoginModal = () => {
     try {
       setSubmitting(true);
       setError("");
-      await sendResetPasswordLink({ email });
+      await sendResetPasswordLink({ email:(email).toLowerCase() });
       setSuccess("Reset password link sent successfully. Check your email.");
       setTimeout(() => {
         setSuccess("");
