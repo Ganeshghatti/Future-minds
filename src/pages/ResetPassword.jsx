@@ -22,6 +22,10 @@ const ResetPassword = () => {
   });
   const [submitting, setSubmitting] = useState(false);
 
+  const passwordFilled = formData.password.length > 0 && formData.confirmPassword.length > 0;
+  const passwordsMatch = passwordFilled && formData.password === formData.confirmPassword;
+  const passwordsMismatch = passwordFilled && !passwordsMatch;
+
   // Verify token on component mount
   useEffect(() => {
     const verifyToken = async () => {
@@ -162,7 +166,14 @@ const ResetPassword = () => {
               {error}
             </div>
           )}
-
+            <div aria-live="polite" className="m-2 min-h-[1.3rem]">
+            {passwordsMismatch && (
+                <p className="text-red-400 text-sm">Passwords do not match</p>
+              )}
+              {passwordsMatch && (
+                <p className="text-sm text-emerald-400">Passwords match</p>
+              )}
+            </div>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <input
@@ -194,7 +205,7 @@ const ResetPassword = () => {
 
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || passwordsMatch}
               className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? 'Changing Password...' : 'Change Password'}
